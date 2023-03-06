@@ -22,6 +22,9 @@ Cant transmogrify rediculus items // Foereaper: would be fun to stab people with
 
 #include "Bag.h"
 #include "Transmogrification.h"
+#include "AI/ScriptDevAI/include/sc_common.h"
+#include "AI/ScriptDevAI/base/escort_ai.h"
+
 #define sTransmogrifier  sTransmogrification
 #define GTS session->GetAcoreString // dropped translation support, no one using?
 
