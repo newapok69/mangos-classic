@@ -60,7 +60,7 @@ struct MeetingStoneInfo
     uint32 maxlevel;
     char* name;
     uint32 mapId;
-    Position position;
+    //Position position;
     uint32 dungeonType;
 };
 
@@ -90,7 +90,7 @@ class LFGQueue
 
         void LoadMeetingStones();
         MeetingStoneSet GetDungeonsForPlayer(Player* player);
-        void TeleportGroupToStone(Group* grp, uint32 areaId);
+    //    void TeleportGroupToStone(Group* grp, uint32 areaId);
     private:
         void FindInArea(std::list<ObjectGuid>& players, uint32 area, uint32 team, ObjectGuid const& exclude);
         bool FindRoleToGroup(ObjectGuid playerGuid, uint32 groupId, LfgRoles role);
