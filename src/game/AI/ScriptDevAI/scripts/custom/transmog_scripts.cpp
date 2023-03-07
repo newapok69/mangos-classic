@@ -139,7 +139,7 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 ac
 		}
 		if (removed)
 		{
-			session->SendAreaTriggerMessage("%s", LANG_ERR_UNTRANSMOG_OK);
+			session->SendAreaTriggerMessage("%u", LANG_ERR_UNTRANSMOG_OK);
 			CharacterDatabase.CommitTransaction();
 		}
 		else
@@ -153,7 +153,7 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 ac
 			if (sTransmogrifier->GetFakeEntry(newItem->GetObjectGuid()))
 			{
 				sTransmogrifier->DeleteFakeEntry(player, action, newItem);
-				session->SendAreaTriggerMessage("%s", LANG_ERR_UNTRANSMOG_OK);
+				session->SendAreaTriggerMessage("%u", LANG_ERR_UNTRANSMOG_OK);
 			}
 			else
 				session->SendNotification(LANG_ERR_UNTRANSMOG_NO_TRANSMOGS);
@@ -279,7 +279,7 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 ac
 		// sender = slot, action = display
 		TransmogAcoreStrings res = sTransmogrifier->Transmogrify(player, ObjectGuid(HIGHGUID_ITEM, action), sender);
 		if (res == LANG_ERR_TRANSMOG_OK)
-			session->SendAreaTriggerMessage("%s", LANG_ERR_TRANSMOG_OK);
+			session->SendAreaTriggerMessage("%u", LANG_ERR_TRANSMOG_OK);
 		else
 			session->SendNotification(res);
 		// OnGossipSelect(player, creature, EQUIPMENT_SLOT_END, sender);
