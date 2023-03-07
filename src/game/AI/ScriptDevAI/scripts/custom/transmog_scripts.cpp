@@ -217,7 +217,7 @@ bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 ac
 			return true;
 		}
 		// action = presetID
-		CharacterDatabase.PExecute("DELETE FROM `custom_transmogrification_sets` WHERE Owner = %u AND PresetID = %u", player->GetObjectGuid(), action);
+		CharacterDatabase.PExecute("DELETE FROM `custom_transmogrification_sets` WHERE Owner = %u AND PresetID = %u", player->GetGUIDLow(), action);
 		sTransmogrifier->presetById[player->GetObjectGuid()][action].clear();
 		sTransmogrifier->presetById[player->GetObjectGuid()].erase(action);
 		sTransmogrifier->presetByName[player->GetObjectGuid()].erase(action);
@@ -348,7 +348,7 @@ bool OnGossipSelectCode(Player* player, Creature* creature, uint32 sender, uint3
 				sTransmogrifier->presetById[player->GetObjectGuid()][presetID][it->first] = it->second;
 			}
 			sTransmogrifier->presetByName[player->GetObjectGuid()][presetID] = name; // Make sure code doesnt mess up SQL!
-			CharacterDatabase.PExecute("REPLACE INTO `custom_transmogrification_sets` (`Owner`, `PresetID`, `SetName`, `SetData`) VALUES (%u, %u, \"%s\", \"%s\")", player->GetObjectGuid(), uint32(presetID), name.c_str(), ss.str().c_str());
+			CharacterDatabase.PExecute("REPLACE INTO `custom_transmogrification_sets` (`Owner`, `PresetID`, `SetName`, `SetData`) VALUES (%u, %u, \"%s\", \"%s\")", player->GetGUIDLow(), uint32(presetID), name.c_str(), ss.str().c_str());
 			if (cost)
 				player->ModifyMoney(-cost);
 			break;
