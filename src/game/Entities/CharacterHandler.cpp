@@ -1048,7 +1048,8 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 
     ObjectGuid playerGUID = _player->GetObjectGuid();
     sTransmogrification->entryMap.erase(playerGUID);
-    QueryResult* xmog = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", _player->GetObjectGuid());
+    //QueryResult* xmog = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", _player->GetObjectGuid());
+    QueryResult* xmog = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", _player->GetGUIDLow());
     if (xmog)
     {
         do
