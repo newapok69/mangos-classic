@@ -524,7 +524,7 @@ void LFGQueue::LoadMeetingStones()
                     stonePosition = Position(data->posX, data->posY, data->posZ, 0.f);
                     mapId = data->mapid;
                 }
-                info.position = stonePosition;
+                //info.position = stonePosition;
                 info.mapId = mapId;
                 switch (info.area)
                 {
@@ -571,7 +571,7 @@ MeetingStoneSet LFGQueue::GetDungeonsForPlayer(Player* player)
     }
     return list;
 }
-
+/*
 void LFGQueue::TeleportGroupToStone(Group* grp, uint32 areaId)
 {
     if (!grp)
@@ -662,4 +662,4 @@ void LFGQueue::TeleportGroupToStone(Group* grp, uint32 areaId)
             }
         }
     }
-}
+}*/
