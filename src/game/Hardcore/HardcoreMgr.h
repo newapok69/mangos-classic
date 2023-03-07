@@ -1,6 +1,14 @@
 #ifndef MANGOS_HARDCOREMGR_H
 #define MANGOS_HARDCOREMGR_H
 
+#include <utility>
+#include <stdint.h>
+#include "Platform/Define.h"
+#include <vector>
+#include <string>
+#include "../Entities/Unit.h"
+#include "Globals/ObjectAccessor.h"
+
 class Player;
 
 // Bag, Slot
