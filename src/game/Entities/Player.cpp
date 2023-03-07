@@ -15860,7 +15860,7 @@ void Player::SaveToDB()
                     std::ostringstream sWowarmoryPartial;
                     sWowarmoryPartial << "INSERT IGNORE INTO character_armory_feed (guid,type,data,date,counter,difficulty,item_guid,item_quality) VALUES ";
                     sWowarmoryPartial << sWowarmory.str().c_str();
-                    CharacterDatabase.PExecute(sWowarmoryPartial.str().c_str());
+                    CharacterDatabase.PExecute("%s",sWowarmoryPartial.str().c_str());
                     sWowarmory.str("");
                     sWowarmory.clear();
                     counter = 1;
@@ -15879,7 +15879,7 @@ void Player::SaveToDB()
                 if (iter != m_wowarmory_feeds.end() - 1)
                     sWowarmory << ",";
             }
-            CharacterDatabase.PExecute(sWowarmory.str().c_str());
+            CharacterDatabase.PExecute("%s",sWowarmory.str().c_str());
         }
         // Clear old saved feeds from storage - they are not required for server core.
         InitWowarmoryFeeds();
