@@ -1,4 +1,8 @@
 #include "Transmogrification.h"
+//#include "Entities/Player.h"
+#include "AI/ScriptDevAI/include/sc_common.h"
+#include "AI/ScriptDevAI/base/escort_ai.h"
+
 
 Transmogrification* Transmogrification::instance()
 {
