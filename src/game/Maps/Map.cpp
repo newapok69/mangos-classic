@@ -813,7 +813,7 @@ void WorldMap::HandleCrash()
             ChatHandler(plr).SendSysMessage("Continent crashed!");
             plr->GetSession()->KickPlayer(true, true, false); // kick to character selection
         }
-        sLog.outError("MAP ANTI CRASH: World Map: %u (%s) %u players kicked!", GetId(), GetMapName(), players.size());
+        sLog.outError("MAP ANTI CRASH: World Map: %u (%s) %zu players kicked!", GetId(), GetMapName(), players.size());
     }
 }
 
@@ -859,7 +859,7 @@ void DungeonMap::HandleCrash()
             if (!tpResult) //just to be extra sure
                 plr->GetSession()->KickPlayer(true, true, false);
         }
-        sLog.outError("MAP ANTI CRASH: Dungeon Map: %u (%s) %u players teleported out!", GetId(), GetMapName(), players.size());
+        sLog.outError("MAP ANTI CRASH: Dungeon Map: %u (%s) %zu players teleported out!", GetId(), GetMapName(), players.size());
     }
 
     /*if (m_resetAfterUnload == true)
@@ -888,7 +888,7 @@ void BattleGroundMap::HandleCrash()
             if (!tpResult)
                 plr->GetSession()->KickPlayer(true, true, false);
         }
-        sLog.outError("MAP ANTI CRASH: Battleground Map: %u (%s) %u players teleported out!", GetId(), GetMapName(), players.size());
+        sLog.outError("MAP ANTI CRASH: Battleground Map: %u (%s) %zu players teleported out!", GetId(), GetMapName(), players.size());
     }
 }
 
@@ -1053,7 +1053,7 @@ void Map::Update(const uint32& t_diff)
 
     if (IsContinent() && HasRealPlayers() && HasActiveAreas() && !m_activeAreasTimer)
     {
-        sLog.outBasic("Map %u: Active Areas:Zones - %u:%u", GetId(), m_activeAreas.size(), m_activeZones.size());
+        sLog.outBasic("Map %u: Active Areas:Zones - %zu:%zu", GetId(), m_activeAreas.size(), m_activeZones.size());
         sLog.outBasic("Map %u: Active Areas Chars - %u of %u", GetId(), activeChars, m_mapRefManager.getSize());
     }
 #endif
