@@ -554,7 +554,7 @@ bool GossipSelect_TransmogNPC(Player* pPlayer, Creature* pUnit, const uint32 sen
 			{
 				if (Items[PlayerGUID].empty())
 				{
-					pPlayer->GetSession()->SendAreaTriggerMessage(pPlayer->GetSession()->GetMangosString(LANG_MENU_NO_SUITABLE_ITEMS));
+					pPlayer->GetSession()->SendAreaTriggerMessage("%s", pPlayer->GetSession()->GetMangosString(LANG_MENU_NO_SUITABLE_ITEMS));
 					GossipHello_TransmogNPC(pPlayer, pUnit);
 					return true;
 				}
