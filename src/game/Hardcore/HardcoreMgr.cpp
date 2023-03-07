@@ -4,6 +4,8 @@
 #include "ObjectMgr.h"
 #include "Config.h"
 #include "SystemConfig.h"
+#include <cmath>
+#include <math.h>
 
 HardcoreLootItem::HardcoreLootItem(uint32 id, uint8 amount)
 : m_id(id)
