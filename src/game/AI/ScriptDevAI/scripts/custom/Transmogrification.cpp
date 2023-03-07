@@ -264,7 +264,8 @@ void Transmogrification::SetFakeEntry(Player* player, uint32 newEntry, Item* ite
 	const ObjectGuid itemGUID = itemTransmogrified->GetObjectGuid();
 	entryMap[player->GetObjectGuid()][itemGUID] = newEntry;
 	dataMap[itemGUID] = player->GetObjectGuid();
-	CharacterDatabase.PExecute("REPLACE INTO custom_transmogrification (GUID, FakeEntry, Owner) VALUES (%u, %u, %u)", itemGUID.GetCounter(), newEntry, player->GetObjectGuid());
+	//CharacterDatabase.PExecute("REPLACE INTO custom_transmogrification (GUID, FakeEntry, Owner) VALUES (%u, %u, %u)", itemGUID.GetCounter(), newEntry, player->GetObjectGuid());
+	CharacterDatabase.PExecute("REPLACE INTO custom_transmogrification (GUID, FakeEntry, Owner) VALUES (%u, %u, %u)", itemGUID.GetCounter(), newEntry, player->GetGUIDLow());
 	UpdateItem(player, itemTransmogrified);
 }
 
@@ -610,7 +611,8 @@ void Transmogrification::DeleteFakeFromDB(const ObjectGuid itemLowGuid)
 
 void Transmogrification::CleanUp(Player* pPlayer)
 {
-	QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetObjectGuid());
+	//QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetObjectGuid());
+	QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetGUIDLow());
 	if (result)
 	{
 		do
@@ -626,7 +628,8 @@ void Transmogrification::BuildTransmogMap(Player* pPlayer)
 {
 	const ObjectGuid playerGUID = pPlayer->GetObjectGuid();
 	entryMap.erase(playerGUID);
-	QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetObjectGuid());
+	//QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetObjectGuid());
+	QueryResult* result = CharacterDatabase.PQuery("SELECT GUID, FakeEntry FROM custom_transmogrification WHERE Owner = %u", pPlayer->GetGUIDLow());
 	if (result)
 	{
 		do
